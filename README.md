@@ -1,16 +1,45 @@
-# React + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my personal portfolio website built using **React** and **Vite**, and deployed on **Vercel**.
 
-Currently, two official plugins are available:
+The purpose of this project is to present my profile, skills, projects, and contact information in a simple and professional way.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live Website: https://portfolio-eight-lime-91.vercel.app  
+Repository: https://github.com/athaulrehman0304/portfolio
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- JavaScript
+- CSS
+- Git & GitHub
+- Vercel (deployment)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## About the Project
+
+This portfolio is a frontend-only application developed using React functional components.  
+It focuses on clean UI, component-based structure, and fast performance using Vite.
+
+The project includes:
+- A home section with basic introduction
+- A projects section displaying selected work
+- A skills section
+- Education details
+- A contact section
+
+---
+
+## Running the Project Locally
+
+To run this project on your local machine:
+
+```bash
+git clone https://github.com/athaulrehman0304/portfolio.git
+cd portfolio
+npm install
+npm run dev
