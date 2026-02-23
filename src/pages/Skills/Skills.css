@@ -1,0 +1,116 @@
+.skills-container {
+  min-height: 100vh;
+  padding: 120px 80px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.skills-header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.skill-category {
+  background: var(--bg-secondary);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.skill-category h3 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-align: center;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.skill-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.skill-item .icon {
+  font-size: 3rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-item:hover .icon {
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+/* Tooltip Styling */
+.tooltip {
+  position: absolute;
+  bottom: -30px;
+  /* Position below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* Tooltip Arrow */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 4px 4px 4px;
+  border-style: solid;
+  border-color: transparent transparent var(--accent) transparent;
+}
+
+.skill-item:hover .tooltip {
+  opacity: 1;
+  bottom: -35px;
+  /* Slight movement for effect */
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    padding: 100px 20px 60px;
+  }
+
+  .skill-item .icon {
+    font-size: 2.5rem;
+  }
+}
