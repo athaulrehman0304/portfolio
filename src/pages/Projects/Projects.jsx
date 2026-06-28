@@ -19,17 +19,19 @@ const projectsData = [
     demoLink: "https://lomar-production.up.railway.app",
     image: "/projects/lomar-dashboard.png"
   },
-];
 
-/* 
+
+
   {
-    title: "Task Management Tool",
-    description: "A productivity tool for organizing tasks with features like drag-and-drop, priority setting, and deadlines.",
-    tags: ["React", "Firebase", "Beautiful DnD"],
-    githubLink: "https://github.com/athaul",
-    demoLink: "https://demo.com",
-    image: ""
+    title: "Personal Portfolio Website",
+    description: "My personal portfolio built using React and Vite, deployed on Vercel. It showcases my skills, projects, education, and contact details",
+    tags: ["React", "Vite", "CSS", "Vercel"],
+    githubLink: "https://github.com/athaulrehman0304/portfolio",
+    demoLink: "https://portfolio-eight-lime-91.vercel.app",
+    image: "/projects/portfolio.png"
   },
+];
+/*
   {
     title: "Portfolio Website",
     description: "My personal portfolio website showcasing my skills, projects, and professional journey.",
