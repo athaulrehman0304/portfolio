@@ -1,7 +1,45 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import api from "../../api/api";
 import "./About.css";
 
 function About() {
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await api.get("/profile");
+        setProfile(response.data);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load profile.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="about-container">
+        <h2>Loading...</h2>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="about-container">
+        <h2>{error}</h2>
+      </section>
+    );
+  }
+
   return (
     <section className="about-container">
       <motion.div
@@ -10,7 +48,9 @@ function About() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1>About <span className="accent">Me</span></h1>
+        <h1>
+          About <span className="accent">Me</span>
+        </h1>
         <div className="underline"></div>
       </motion.div>
 
@@ -21,34 +61,64 @@ function About() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <h3>I'm Athaul Rehman, a passionate developer.</h3>
-          <p>
-            I am a fresher software developer with a strong foundation in modern web technologies.
-            I love building responsive, user-friendly applications and solving complex problems with clean code.
-            My journey in tech is driven by curiosity and a desire to constantly learn and improve.
-          </p>
-          <p>
-            I specialize in React ecosystem and have experience with backend technologies.
-            I'm always looking for opportunities to work on challenging projects and collaborate with talented teams.
-          </p>
+          <h3>{profile.name}</h3>
+
+          <h4
+            style={{
+              color: "#00df82",
+              marginBottom: "15px",
+              fontWeight: "500",
+            }}
+          >
+            {profile.headline}
+          </h4>
+
+          <p>{profile.bio}</p>
 
           <div className="personal-info">
             <div className="info-item">
               <span className="label">Location:</span>
-              <span className="value">India</span>
+              <span className="value">{profile.location}</span>
             </div>
+
             <div className="info-item">
               <span className="label">Email:</span>
-              <span className="value">ataul0917@example.com</span>
+              <span className="value">{profile.email}</span>
             </div>
+
             <div className="info-item">
               <span className="label">Degree:</span>
-              <span className="value">B.Tech in Computer Science</span>
+              <span className="value">{profile.degree}</span>
             </div>
+
             <div className="info-item">
               <span className="label">Availability:</span>
-              <span className="value accent">Open to Work</span>
+              <span className="value accent">{profile.availability}</span>
             </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              gap: "15px",
+              marginTop: "25px",
+            }}
+          >
+            <a
+              href={profile.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+
+            <a
+              href={profile.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
           </div>
         </motion.div>
 
@@ -61,8 +131,8 @@ function About() {
           <div className="visual-card">
             <div className="card-inner">
               <span>Code.</span>
-              <span>Create.</span>
-              <span>Innovate.</span>
+              <span>Build.</span>
+              <span>Learn.</span>
             </div>
           </div>
         </motion.div>
