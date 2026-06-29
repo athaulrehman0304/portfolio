@@ -3,7 +3,9 @@ package com.athaul.portfolio.controller;
 import com.athaul.portfolio.dto.PageResponse;
 import com.athaul.portfolio.dto.ProjectResponse;
 import com.athaul.portfolio.service.ProjectService;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.constraints.Positive;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -31,14 +33,26 @@ public class ProjectController {
 
     @GetMapping
     public ResponseEntity<PageResponse<ProjectResponse>> getProjects(
-            @PageableDefault(size = 20, sort = {"displayOrder", "createdAt"}, direction = Sort.Direction.ASC)
+
+            @ParameterObject
+            @Parameter(hidden = true)
+            @PageableDefault(
+                    size = 20,
+                    sort = {"displayOrder", "createdAt"},
+                    direction = Sort.Direction.ASC
+            )
             Pageable pageable) {
+
         Page<ProjectResponse> page = projectService.getProjects(pageable);
         return ResponseEntity.ok(PageResponse.from(page));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProjectResponse> getProjectById(@PathVariable @Positive Long id) {
+    public ResponseEntity<ProjectResponse> getProjectById(
+            @PathVariable
+            @Positive
+            Long id) {
+
         return ResponseEntity.ok(projectService.getProjectById(id));
     }
 }

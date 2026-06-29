@@ -1,75 +1,46 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import api from "../../api/api";
 import "./Projects.css";
 
-const projectsData = [
-  {
-    title: "Clinical Trial Management System",
-    description: "A full-stack clinical trial management system with secure admin login, participant CRUD operations, search, sorting, pagination, and CSV export.",
-    tags: ["React", "Node.js", "MongoDB", "JWT"],
-    githubLink: "https://github.com/athaulrehman0304/clinical-trial-app",
-    demoLink: "https://clinical-trial-app-1.onrender.com",
-    image: "/projects/clinical-trial-dashboard.png" // Placeholder will be used
-  },
-  {
-    title: "LoMar – Data Poisoning Detection System",
-    description: "A full-stack Django web application that detects malicious data poisoning patterns in text datasets. Features role-based access for users and administrators, ML model training, performance comparison, and prediction logging.",
-    tags: ["Python", "Django", "Machine Learning", "Scikit-learn", "SQLite"],
-    githubLink: "https://github.com/athaulrehman0304/lomar",
-    demoLink: "https://lomar-production.up.railway.app",
-    image: "/projects/lomar-dashboard.png"
-  },
+function Projects() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
+  async function fetchProjects() {
+    try {
+      const response = await api.get("/projects");
 
-  {
-    title: "Personal Portfolio Website",
-    description: "My personal portfolio built using React and Vite, deployed on Vercel. It showcases my skills, projects, education, and contact details",
-    tags: ["React", "Vite", "CSS", "Vercel"],
-    githubLink: "https://github.com/athaulrehman0304/portfolio",
-    demoLink: "https://portfolio-eight-lime-91.vercel.app",
-    image: "/projects/portfolio.png"
-  },
-];
-/*
-  {
-    title: "Portfolio Website",
-    description: "My personal portfolio website showcasing my skills, projects, and professional journey.",
-    tags: ["React", "Framer Motion", "CSS3"],
-    githubLink: "https://github.com/athaul/portfolio",
-    demoLink: "https://athaul.com",
-    image: ""
-  },
-  {
-    title: "Chat Application",
-    description: "Real-time chat application with features like private messaging, group chats, and file sharing.",
-    tags: ["React", "Socket.io", "Express"],
-    githubLink: "https://github.com/athaul",
-    demoLink: "https://demo.com",
-    image: ""
-  },
-  {
-    title: "Blog Platform",
-    description: "A content management system for creating and publishing blog posts with rich text editing.",
-    tags: ["Next.js", "Markdown", "Tailwind CSS"],
-    githubLink: "https://github.com/athaul",
-    demoLink: "https://demo.com",
-    image: ""
+      setProjects(response.data.content);
+    } catch (error) {
+      console.error("Failed to fetch projects:", error);
+    } finally {
+      setLoading(false);
+    }
   }
 
-
-*/
-
-function Projects() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
+
+  if (loading) {
+    return (
+      <section className="projects-container">
+        <h2>Loading Projects...</h2>
+      </section>
+    );
+  }
 
   return (
     <section className="projects-container">
@@ -79,7 +50,10 @@ function Projects() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1>My <span className="accent">Projects</span></h1>
+        <h1>
+          My <span className="accent">Projects</span>
+        </h1>
+
         <div className="underline"></div>
       </motion.div>
 
@@ -89,8 +63,16 @@ function Projects() {
         initial="hidden"
         animate="visible"
       >
-        {projectsData.map((project, index) => (
-          <ProjectCard key={index} {...project} />
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.id}
+            title={project.title}
+            description={project.description}
+            tags={project.tags}
+            githubLink={project.repositoryUrl}
+            demoLink={project.liveUrl}
+            image={project.imageUrl}
+          />
         ))}
       </motion.div>
     </section>

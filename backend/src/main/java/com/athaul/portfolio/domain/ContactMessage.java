@@ -40,7 +40,7 @@ public class ContactMessage {
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
-    protected ContactMessage() {
+    public ContactMessage() {
         // Required by JPA.
     }
 

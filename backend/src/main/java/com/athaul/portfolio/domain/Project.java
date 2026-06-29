@@ -73,7 +73,7 @@ public class Project {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
-    protected Project() {
+    public Project() {
         // Required by JPA.
     }
 

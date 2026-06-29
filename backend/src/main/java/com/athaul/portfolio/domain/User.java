@@ -49,7 +49,7 @@ public class User {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
-    protected User() {
+    public User() {
         // Required by JPA.
     }
 

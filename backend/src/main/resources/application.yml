@@ -4,8 +4,8 @@ spring:
 
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/portfolio}
-    username: ${SPRING_DATASOURCE_USERNAME:portfolio}
-    password: ${SPRING_DATASOURCE_PASSWORD:portfolio}
+    username: postgres
+    password: Aman@1694564
     driver-class-name: org.postgresql.Driver
 
   jpa:
