@@ -65,6 +65,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/projects/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/profile/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/skills/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/v1/education/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/contact").permitAll()
                         .requestMatchers(HttpMethod.GET, uploadsPublicPattern).permitAll()
                         .requestMatchers(

@@ -1,0 +1,42 @@
+.profile-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+}
+
+.profile-page h1 {
+  margin-bottom: 30px;
+}
+
+.profile-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.profile-page input,
+.profile-page textarea {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+.profile-page textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.profile-page button {
+  padding: 14px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-page button:hover {
+  background: #16a34a;
+}

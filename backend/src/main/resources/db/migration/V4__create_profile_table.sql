@@ -37,7 +37,7 @@ VALUES (
     'Software Developer',
     'Computer Science graduate passionate about building full-stack web applications and continuously improving software development skills.',
     'India',
-    'ataul0917@gmail.com',
+    'athaul@example.com',
     'B.Tech in Computer Science',
     'Open to Work',
     'https://github.com/athaulrehman0304',

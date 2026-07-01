@@ -1,0 +1,17 @@
+import "./Topbar.css";
+
+function Topbar() {
+  return (
+    <header className="topbar">
+
+      <h2>Portfolio CMS</h2>
+
+      <button>
+        Logout
+      </button>
+
+    </header>
+  );
+}
+
+export default Topbar;
